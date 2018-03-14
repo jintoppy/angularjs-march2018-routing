@@ -1,19 +1,37 @@
 var myapp = angular.module('myapp', ['ui.router']);
 
+myapp.controller('MyCtrl', ['AppService', function(AppService){
+    AppService.getProducts();
+
+}]);
+
 myapp.config(['$stateProvider', 
     function($stateProvider){
 
         $stateProvider.state({
             name: 'home',
-            url: '/home',
-            template: '<div>Home page</div>'
+            url: '/homepage',
+            component: 'homeComponent',
+            resolve: {
+                products: ['AppService', function(AppService){
+                    return AppService.getProducts();
+                }]
+            }
         });
 
+
+
+
+        
         $stateProvider.state({
             name: 'about',
-            url: '/about',
-            template: '<div>About page</div>'
+            url: '/aboutpage',
+            component: 'aboutComponent',
+            resolve: {
+                title: function(){
+                    return 'Hello';
+                }
+            }
         });
 
     }]);
-
