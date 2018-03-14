@@ -5,9 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+        .header{
+            background-color: mediumorchid;
+            padding: 10px;
+        }
+        body, html, .container{
+            height: 100%;
+            min-height: 100%;
+        }
+        .content-area{
+            min-height: 70%;
+        }
+        .footer{
+            background-color: green;
+        }
+        li{
+            list-style: none;
+            display: inline-block;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <div class="header">
+            <h2>Angular App</h2>
+            <ul>
+                <li>
+                    <a ui-sref="home">Home</a> 
+                </li>
+                <li>
+                    <a ui-sref="about">About</a> 
+                </li>
+            </ul>
+        </div>
+        <div class="content-area">
+            <ui-view></ui-view>
+        </div>
+        <div class="footer">
+            This is the footer 
+        </div>
+
+    </div>
+    
     <script src="angular.js"></script>
+    <script src="angular-ui-router.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
